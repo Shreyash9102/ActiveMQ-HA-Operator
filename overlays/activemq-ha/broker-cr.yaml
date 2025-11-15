@@ -1,0 +1,33 @@
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: example-activemq
+  namespace: activemq-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"   # ensure ArgoCD applies operator/CRDs (wave 0) first
+spec:
+  deploymentPlan:
+    size: 3
+    image: "quay.io/arkmq/activemq-artemis-broker:latest"   # change to a pinned broker image in prod
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: standard
+  console:
+    enabled: true
+  acceptors:
+    - name: netty
+      protocol: openwire
+      port: 61616
+  podTemplate:
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - example-activemq
+              topologyKey: "kubernetes.io/hostname"
