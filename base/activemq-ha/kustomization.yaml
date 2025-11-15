@@ -9,8 +9,7 @@ resources:
   - https://github.com/arkmq-org/activemq-artemis-operator/blob/main/deploy/election_role.yaml
   - https://github.com/arkmq-org/activemq-artemis-operator/blob/main/deploy/election_role_binding.yaml
   - https://github.com/arkmq-org/activemq-artemis-operator/blob/main/deploy/operator.yaml
-  - 
-  - https://github.com/arkmq-org/activemq-artemis-operator/releases/download/v2.1.0/activemq-artemis-operator.yaml
+
 namespace: activemq-system
 commonLabels:
   app: activemq-operator
