@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ../../base/activemq-ha   # pulls operator + CRDs from upstream release
   - broker-cr.yaml           # your broker custom resource; must be applied after CRDs
-namespace: activemq-system
+# namespace: activemq-system
 
 
 

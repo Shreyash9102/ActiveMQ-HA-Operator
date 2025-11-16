@@ -2,7 +2,6 @@ apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
   name: example-activemq
-  namespace: activemq-system
   annotations:
     argocd.argoproj.io/sync-wave: "1"   # ensure ArgoCD applies operator/CRDs (wave 0) first
 spec:
