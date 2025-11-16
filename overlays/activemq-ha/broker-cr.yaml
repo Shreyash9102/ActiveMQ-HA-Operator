@@ -2,9 +2,11 @@ apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
   name: artemis-broker
+  namespace: activemq-artemis-operator
 spec:
   deploymentPlan:
-    size: 1 
-    # persistenceEnabled: true
-    # messageMigration requires 2+ brokers
-    # messageMigration: true  
+    size: 1
+    persistenceEnabled: true
+    journalType: nio
+    storage:
+      size: 2Gi
