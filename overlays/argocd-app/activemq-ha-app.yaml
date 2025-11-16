@@ -11,7 +11,7 @@ spec:
     path: overlays/activemq-ha
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: activemq-artemis-operator  # Changed from 'argocd' to operator namespace
   syncPolicy:
     automated:
       prune: true
@@ -19,3 +19,5 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - SkipDryRunOnMissingResource=true
+    syncWaves:
+      - order: 0  # Deploy operator first

@@ -2,30 +2,38 @@ apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
   name: example-activemq
+  namespace: activemq-artemis-operator  # Match the operator namespace
   annotations:
-    argocd.argoproj.io/sync-wave: "1"   # ensure ArgoCD applies operator/CRDs (wave 0) first
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   deploymentPlan:
     size: 3
     persistence:
       enabled: true
       size: 10Gi
-      storageClass: standard
+      storageClassName: standard  # Note: 'storageClass' should be 'storageClassName'
+    messageMigration: true  # Enable message migration for HA
   console:
-    enabled: true
+    expose: true  # Enable web console access
   acceptors:
-    - name: netty
-      protocol: openwire
+    - name: amqp
+      protocols: amqp
+      port: 5672
+      expose: true
+    - name: all
+      protocols: all
       port: 61616
-  podTemplate:
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - example-activemq
-              topologyKey: "kubernetes.io/hostname"
+      expose: true
+  # Pod anti-affinity ensures brokers run on different nodes
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: application
+                  operator: In
+                  values:
+                    - example-activemq-app
+            topologyKey: kubernetes.io/hostname
