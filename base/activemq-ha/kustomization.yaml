@@ -14,7 +14,7 @@ kind: Kustomization
 #   - https://raw.githubusercontent.com/arkmq-org/activemq-artemis-operator/main/deploy/operator.yaml
 
 resources:
-  - https://github.com/arkmq-org/activemq-artemis-operator/releases/download/v2.1.0/activemq-artemis-operator.yaml
+  - https://github.com/arkmq-org/activemq-artemis-operator/releases/download/v2.0.5/activemq-artemis-operator.yaml
 
 commonLabels:
   app: activemq-operator
