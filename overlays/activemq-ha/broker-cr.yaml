@@ -7,7 +7,6 @@ metadata:
 spec:
   deploymentPlan:
     size: 3
-    image: "quay.io/arkmq/activemq-artemis-broker:latest"   # change to a pinned broker image in prod
     persistence:
       enabled: true
       size: 10Gi
