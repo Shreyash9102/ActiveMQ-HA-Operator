@@ -5,9 +5,16 @@ metadata:
   namespace: activemq-artemis-operator
 spec:
   deploymentPlan:
-    size: 1
+    size: 2
     image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.25
-    persistenceEnabled: true
-    journalType: nio
-    storage:
-      size: 2Gi
+    # Disable persistence to get it working first
+    persistenceEnabled: false
+  acceptors:
+    - name: amqp
+      protocols: amqp
+      port: 5672
+    - name: all
+      protocols: all
+      port: 61616
+  console:
+    expose: true
