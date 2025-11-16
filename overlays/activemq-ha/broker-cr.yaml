@@ -1,39 +1,10 @@
 apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
-  name: example-activemq
-  namespace: activemq-artemis-operator  # Match the operator namespace
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
+  name: artemis-broker
 spec:
   deploymentPlan:
-    size: 3
-    persistence:
-      enabled: true
-      size: 10Gi
-      storageClassName: standard  # Note: 'storageClass' should be 'storageClassName'
-    messageMigration: true  # Enable message migration for HA
-  console:
-    expose: true  # Enable web console access
-  acceptors:
-    - name: amqp
-      protocols: amqp
-      port: 5672
-      expose: true
-    - name: all
-      protocols: all
-      port: 61616
-      expose: true
-  # Pod anti-affinity ensures brokers run on different nodes
-  affinity:
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-                - key: application
-                  operator: In
-                  values:
-                    - example-activemq-app
-            topologyKey: kubernetes.io/hostname
+    size: 2
+    persistenceEnabled: true
+    # messageMigration requires 2+ brokers
+    messageMigration: true  
