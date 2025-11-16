@@ -6,6 +6,7 @@ metadata:
 spec:
   deploymentPlan:
     size: 1
+    image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.25
     persistenceEnabled: true
     journalType: nio
     storage:
