@@ -6,7 +6,6 @@ metadata:
 spec:
   deploymentPlan:
     size: 2
-    image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:1.0.25
     # Disable persistence to get it working first
     persistenceEnabled: false
   acceptors:
