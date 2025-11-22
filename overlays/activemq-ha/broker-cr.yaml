@@ -9,6 +9,9 @@ spec:
     persistenceEnabled: true
     messageMigration: true
     journalType: NIO
+    version:     
+      image: "quay.io/arkmq-org/activemq-artemis-broker-kubernetes"
+      brokerVersion: "2.35.0" 
 
 
 # docker pull quay.io/arkmq-org/activemq-artemis-broker-kubernetes
