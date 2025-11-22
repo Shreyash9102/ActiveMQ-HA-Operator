@@ -6,8 +6,9 @@ metadata:
 spec:
   deploymentPlan:
     size: 2
-    persistenceEnabled: false
-    
+    persistenceEnabled: true
+    messageMigration: true
+
 # apiVersion: broker.amq.io/v1beta1
 # kind: ActiveMQArtemis
 # metadata:
