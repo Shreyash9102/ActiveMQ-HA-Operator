@@ -8,6 +8,10 @@ spec:
     size: 2
     persistenceEnabled: false
     messageMigration: true
+    journalType: NIO
+
+
+# docker pull quay.io/arkmq-org/activemq-artemis-broker-kubernetes
 
 # apiVersion: broker.amq.io/v1beta1
 # kind: ActiveMQArtemis
