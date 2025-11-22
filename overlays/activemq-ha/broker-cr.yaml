@@ -6,7 +6,7 @@ metadata:
 spec:
   deploymentPlan:
     size: 2
-    persistenceEnabled: false
+    persistenceEnabled: true
     messageMigration: true
     journalType: NIO
 
