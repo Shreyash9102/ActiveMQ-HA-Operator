@@ -6,7 +6,7 @@ metadata:
 spec:
   deploymentPlan:
     size: 2
-    persistenceEnabled: true
+    persistenceEnabled: false
     messageMigration: true
 
 # apiVersion: broker.amq.io/v1beta1
