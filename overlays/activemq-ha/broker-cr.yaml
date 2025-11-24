@@ -8,6 +8,14 @@ spec:
     size: 2
     persistenceEnabled: true
     messageMigration: true
+    storage:
+      size: 2Gi
+      storageClassName: standard
+  # Add environment variable override
+  env:
+    - name: AMQ_DATA_DIR
+      value: "/home/jboss/amq-broker/data"
+
 
 
 # docker pull quay.io/arkmq-org/activemq-artemis-broker-kubernetes
