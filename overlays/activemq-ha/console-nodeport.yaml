@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: artemis-console-nodeport
+  namespace: activemq-artemis-operator
+spec:
+  type: NodePort
+  selector:
+    application: artemis-broker-app
+  ports:
+    - name: console
+      port: 8161
+      targetPort: 8161
+      nodePort: 32081

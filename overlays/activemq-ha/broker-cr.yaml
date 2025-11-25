@@ -11,10 +11,32 @@ spec:
     storage:
       size: 2Gi
       storageClassName: standard
-  # Add environment variable override
+  
+  # Enable Web Console
+  console:
+    expose: true
+  
+  # Configure Acceptors - OpenWire, AMQP, and STOMP
+  acceptors:
+    - name: openWire
+      protocols: CORE
+      port: 61616
+    - name: amqp
+      protocols: AMQP
+      port: 5672
+    - name: stomp
+      protocols: STOMP
+      port: 61613
+    - name: all
+      protocols: ALL
+      port: 61614
+  
+  # Environment variables
   env:
     - name: AMQ_DATA_DIR
       value: "/home/jboss/amq-broker/data"
+    - name: AMQ_REQUIRE_LOGIN
+      value: "true"
 
 
 
