@@ -12,9 +12,9 @@ spec:
       size: 2Gi
       storageClassName: standard
   
-  # Enable Web Console
-  # console:  If we have these broker pods are nog being created nothing is shown up ,never no what's going worng
-  #   expose: true 
+  # Enable Web Console  ( If we have these broker pods are nog being created nothing is shown up ,never no what's going worng )
+  console:  
+    expose: true 
   
   # Configure Acceptors - OpenWire, AMQP, and STOMP
   acceptors:
