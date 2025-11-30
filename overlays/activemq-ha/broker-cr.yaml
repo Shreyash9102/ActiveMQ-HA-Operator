@@ -22,6 +22,8 @@ spec:
     - name: all
       protocols: all
       port: 61616
+  console:
+    expose: true
 
 
 
