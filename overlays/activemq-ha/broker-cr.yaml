@@ -15,6 +15,13 @@ spec:
   env:
     - name: AMQ_DATA_DIR
       value: "/home/jboss/amq-broker/data"
+  acceptors:
+    - name: amqp
+      protocols: amqp
+      port: 5672
+    - name: all
+      protocols: all
+      port: 61616
 
 
 
