@@ -13,8 +13,8 @@ spec:
       storageClassName: standard
   
   # Enable Web Console
-  console:
-    expose: true
+  # console:  If we have these broker pods are nog being created nothing is shown up ,never no what's going worng
+  #   expose: true 
   
   # Configure Acceptors - OpenWire, AMQP, and STOMP
   acceptors:
