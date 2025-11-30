@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: activemq-artemis-operator
 
 resources:
+  - ../../base/activemq-ha/
   - broker-cr.yaml             # Broker custom resource with STOMP, console, and acceptors
   - broker-secrets.yaml        # Broker secrets for users and passwords
   - console-nodeport.yaml   # NodePort service for web console exposure
