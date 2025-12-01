@@ -6,6 +6,8 @@ metadata:
 spec:
   console:
     expose: true
+    exposeMode: ingress
+    ingressHost: artemis.example.com
     
   deploymentPlan:
     size: 2
