@@ -4,6 +4,9 @@ metadata:
   name: artemis-broker
   namespace: activemq-artemis-operator
 spec:
+  console:
+    expose: true
+    
   deploymentPlan:
     size: 2
     persistenceEnabled: true
@@ -18,26 +21,26 @@ spec:
   #   exposeMode: NodePort
   
   # Configure Acceptors - OpenWire, AMQP, and STOMP
-  acceptors:
-    - name: openWire
-      protocols: CORE
-      port: 61616
-    - name: amqp
-      protocols: AMQP
-      port: 5672
-    - name: stomp
-      protocols: STOMP
-      port: 61613
-    - name: all
-      protocols: ALL
-      port: 61614
+  # acceptors:
+  #   - name: openWire
+  #     protocols: CORE
+  #     port: 61616
+  #   - name: amqp
+  #     protocols: AMQP
+  #     port: 5672
+  #   - name: stomp
+  #     protocols: STOMP
+  #     port: 61613
+  #   - name: all
+  #     protocols: ALL
+  #     port: 61614
+
+  enableMetricsPlugin: true
   
   # Environment variables
   env:
     - name: AMQ_DATA_DIR
       value: "/home/jboss/amq-broker/data"
-    - name: AMQ_REQUIRE_LOGIN
-      value: "true"
 
 
 
